@@ -15,13 +15,11 @@ function TreeNode(val) {
  * Add to a binary tree
  */
 TreeNode.prototype.add = function(node) {
-  if (this.left === null) {
+  if (this.left === null)
     return this.left = node;
-  } else if (this.right === null) {
+  else if (this.right === null)
     return this.right = node;
-  } else {
-    throw new Error('Can\'t add a new leaf');
-  }
+  throw new Error('Can\'t add a new leaf');
 }
 
 /**
@@ -29,11 +27,11 @@ TreeNode.prototype.add = function(node) {
  * @param {TreeNode} q
  * @return {boolean}
  */
-var isSameTree = function(p, q) {
-  if (p == null && q == null) return true;
-  if (p == null || q == null) return false;
+function isSameTree(p, q) {
+  if (p === null && q === null) return true;
+  if (p === null || q === null) return false;
 
-  if (p.val == q.val)
+  if (p.val === q.val)
     return isSameTree(p.left, q.left) &&
       isSameTree(p.right, q.right);
 

@@ -3,7 +3,7 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target){ // 85 ms
+function twoSum(nums, target) {
   const hash = {};
   for (let i = 0; i < nums.length; i++) {
     let remain = target - nums[i];
