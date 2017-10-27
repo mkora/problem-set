@@ -5,22 +5,28 @@
  *     this.left = this.right = null;
  * }
  */
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
 
-function TreeNode(val) {
-  this.val = val;
-  this.left = this.right = null;
+  /**
+   * Add a node to a binary tree
+   */
+  add(node) {
+    if (this.left === null) {
+      this.left = node;
+      return this.left;
+    } else if (this.right === null) {
+      this.right = node;
+      return this.right;
+    }
+    return null;
+  }
 }
 
-/**
- * Add to a binary tree
- */
-TreeNode.prototype.add = function(node) {
-  if (this.left === null)
-    return this.left = node;
-  else if (this.right === null)
-    return this.right = node;
-  throw new Error('Can\'t add a new leaf');
-}
 
 /**
  * @param {TreeNode} p
@@ -31,12 +37,15 @@ function isSameTree(p, q) {
   if (p === null && q === null) return true;
   if (p === null || q === null) return false;
 
-  if (p.val === q.val)
-    return isSameTree(p.left, q.left) &&
-      isSameTree(p.right, q.right);
+  if (p.val === q.val) {
+    return isSameTree(p.left, q.left)
+      && isSameTree(p.right, q.right);
+  }
 
   return false;
-};
+}
 
-module.exports.isSameTree = isSameTree;
-module.exports.TreeNode = TreeNode;
+module.exports = {
+  isSameTree,
+  TreeNode,
+};

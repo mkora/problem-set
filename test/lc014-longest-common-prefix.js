@@ -1,21 +1,20 @@
-const expect = require("chai").expect;
+const { expect } = require('chai');
 const solution = require('../solution/lc014-longest-common-prefix.js').longestCommonPrefix;
 
-describe("LeetCode: Longest Common Prefix", function() {
-  describe("Find the longest common prefix string amongst an array of strings", function() {
-    it("longestCommonPrefix be a function", function() {
+describe('LeetCode: Longest Common Prefix', () => {
+  describe('Find the longest common prefix string amongst an array of strings', () => {
+    it('longestCommonPrefix be a function', () => {
       expect(solution).to.be.a('function');
     });
 
-    it(`["apple", "ape", "april", "apply", "approach"] should return "ap"`, function() {
-      expect(solution(["apple", "ape", "april", "apply", "approach"])).to.equal("ap");
+    it('[\'apple\', \'ape\', \'april\', \'apply\', \'approach\'] should return \'ap\'', () => {
+      expect(solution(['apple', 'ape', 'april', 'apply', 'approach'])).to.equal('ap');
     });
-    it(`["aca","cba"] should return ""`, function() {
-      expect(solution(["aca","cba"])).to.equal("");
+    it('[\'aca\',\'cba\'] should return \'\'', () => {
+      expect(solution(['aca', 'cba'])).to.equal('');
     });
-    it(`[] should return ""`, function() {
-      expect(solution([])).to.equal("");
+    it('[] should return \'\'', () => {
+      expect(solution([])).to.equal('');
     });
   });
-
 });

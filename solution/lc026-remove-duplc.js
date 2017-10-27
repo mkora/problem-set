@@ -3,16 +3,20 @@
  * @return {number}
  */
 function removeDuplicates(nums) {
-  let i = 0, j = (i + 1);
-  while (j < nums.length) {
-    if (nums[i] != nums[j]) {
-      // if it's not a dub, move number closer to the beginnig
-      nums[i+1] = nums[j];
-      i++;
-    }
-    j++; // continue while dubs
-  }
-  return nums.length = i + 1;
-};
+  let i = 0;
+  let j = (i + 1);
 
-module.exports.removeDuplicates = removeDuplicates;
+  while (j < nums.length) {
+    if (nums[i] !== nums[j]) {
+      // if it's not a dub, move number closer to the beginnig
+      nums[i + 1] = nums[j];
+      i += 1;
+    }
+    j += 1; // continue while dubs
+  }
+
+  nums.length = i + 1;
+  return nums.length;
+}
+
+module.exports = { removeDuplicates };

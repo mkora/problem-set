@@ -3,11 +3,13 @@
  * @param {number} target
  * @return {number}
  */
-function searchInsert (nums, target) {
-  let left = 0, 
-    right = nums.length - 1;
+function searchInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+
   while (left <= right) {
-    let i = Math.round((right + left) / 2);
+    const i = Math.round((right + left) / 2);
+
     if (target < nums[i]) {
       right = (i - 1);
     } else if (target > nums[i]) {
@@ -16,7 +18,8 @@ function searchInsert (nums, target) {
       return i;
     }
   }
-  return left;
-};
 
-module.exports.searchInsert = searchInsert;
+  return left;
+}
+
+module.exports = { searchInsert };

@@ -5,23 +5,27 @@
  *     this.left = this.right = null;
  * }
  */
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
 
- function TreeNode(val) {
-   this.val = val;
-   this.left = this.right = null;
- }
-
- /**
-  * Add to a binary tree
-  */
-TreeNode.prototype.add = function(node) {
-  if (this.left === null)
-    return this.left = node;
-  else if (this.right === null)
-    return this.right = node;
-  throw new Error('Can\'t add a new leaf');
+  /**
+   * Add a node to a binary tree
+   */
+  add(node) {
+    if (this.left === null) {
+      this.left = node;
+      return this.left;
+    } else if (this.right === null) {
+      this.right = node;
+      return this.right;
+    }
+    return null;
+  }
 }
-
 
 /**
  * DFS
@@ -32,15 +36,17 @@ TreeNode.prototype.add = function(node) {
 function isSymmetricDFS(root) {
   if (root == null) return true;
 
-  let visit = (left, right) => {
+  const visit = (left, right) => {
     if (left == null && right == null) return true;
     if (left == null || right == null) return false;
-    if (left.val != right.val) return false;
-    return visit(left.left, right.right) && visit(left.right, right.left);
-  }
+    if (left.val !== right.val) return false;
+
+    return visit(left.left, right.right)
+      && visit(left.right, right.left);
+  };
 
   return visit(root.left, root.right);
-};
+}
 
 
 /**
@@ -55,24 +61,31 @@ function isSymmetricBFS(root) {
   const queue = [root.left, root.right];
 
   while (queue.length > 0) {
-    let left = queue.shift(),
-      right = queue.shift();
+    const left = queue.shift();
+    const right = queue.shift();
 
-    if (left === null && right === null) continue;
-    if (left === null || right === null ||
-      left.val !== right.val) return false;
+    if (!(left === null && right === null)) {
+      if (
+        left === null
+        || right === null
+        || left.val !== right.val
+      ) {
+        return false;
+      }
 
-    queue.push(left.left);
-    queue.push(right.right);
+      queue.push(left.left);
+      queue.push(right.right);
 
-    queue.push(left.right);
-    queue.push(right.left);
+      queue.push(left.right);
+      queue.push(right.left);
+    }
   }
 
   return true;
+}
+
+module.exports = {
+  isSymmetricDFS,
+  isSymmetricBFS,
+  TreeNode,
 };
-
-
-module.exports.isSymmetricDFS = isSymmetricDFS;
-module.exports.isSymmetricBFS = isSymmetricBFS;
-module.exports.TreeNode = TreeNode;
