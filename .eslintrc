@@ -1,0 +1,13 @@
+{
+  "extends": "./node_modules/eslint-config-airbnb-base/.eslintrc",
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    // rule: http://eslint.org/docs/rules/no-param-reassign.html
+    "no-param-reassign": ["warn", {
+      "props": true
+    }],
+    "no-bitwise": "warn",
+  },
+}
